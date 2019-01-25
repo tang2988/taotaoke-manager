@@ -7,20 +7,41 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.taotaoke.common.util.DataResult;
 import com.taotaoke.pojo.TbItem;
 import com.taotaoke.service.itemService;
 
 @Controller
+
+/**
+ * @author 谢雄辉
+ * @version 1.8
+ * @date 2019年1月25日
+ */
 public class itemController {
-	
+
 	@Resource
 	itemService itemService;
-	
+
+	/**
+	 * 根据商品id查询
+	 * 
+	 * @author 谢雄辉
+	 * @version 1.8
+	 * @return 2019年1月25日
+	 */
 	@RequestMapping("/item/{itemid}")
 	@ResponseBody
-	public TbItem rejson(@PathVariable Long  itemid){
+	public TbItem rejson(@PathVariable Long itemid) {
 		TbItem item = itemService.selecById(itemid);
 		return item;
+	}
+
+	@RequestMapping("/item/list")
+	@ResponseBody
+	public DataResult itemlist(Integer page, Integer rows) {
+		DataResult dataResult = itemService.findByPage(page, rows);
+		return dataResult;
 	}
 
 }
