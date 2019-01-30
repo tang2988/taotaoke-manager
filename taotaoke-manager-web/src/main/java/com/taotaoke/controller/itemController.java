@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.taotaoke.common.util.DataResult;
+import com.taotaoke.common.pojo.DataResult;
+import com.taotaoke.common.pojo.TaotaoResult;
 import com.taotaoke.pojo.TbItem;
 import com.taotaoke.service.itemService;
 
@@ -43,5 +44,23 @@ public class itemController {
 		DataResult dataResult = itemService.findByPage(page, rows);
 		return dataResult;
 	}
+
+	/**
+	 * 添加商品
+	 * 
+	 * @param item
+	 * @return taotaoResult
+	 */
+	@RequestMapping("/item/save")
+	@ResponseBody
+	public TaotaoResult createItem(TbItem item) {
+		TaotaoResult taotaoResult = itemService.createItem(item);
+		return taotaoResult;
+	}
+	
+	@RequestMapping("/rest/page/item-edit")
+	@ResponseBody
+	
+	
 
 }

@@ -43,6 +43,7 @@
         iconCls:'icon-edit',
         handler:function(){
         	var ids = getSelectionsIds();
+        	
         	if(ids.length == 0){
         		$.messager.alert('提示','必须选择一个商品才能编辑!');
         		return ;

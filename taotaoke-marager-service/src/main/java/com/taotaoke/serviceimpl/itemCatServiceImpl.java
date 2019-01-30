@@ -7,7 +7,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.taotaoke.common.util.TreeResult;
+import com.taotaoke.common.pojo.TreeResult;
 import com.taotaoke.mapper.TbItemCatMapper;
 import com.taotaoke.pojo.TbItemCat;
 import com.taotaoke.pojo.TbItemCatExample;
