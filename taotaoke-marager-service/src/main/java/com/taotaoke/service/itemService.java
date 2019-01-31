@@ -11,5 +11,7 @@ public interface itemService {
 	public DataResult findByPage(int page, int rows);
 
 	public TaotaoResult createItem(TbItem item);
+	
+	public TaotaoResult updateItem(TbItem item);
 
 }

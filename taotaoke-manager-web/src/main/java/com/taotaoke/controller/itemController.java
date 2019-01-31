@@ -1,10 +1,13 @@
 package com.taotaoke.controller;
 
+import java.util.Date;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.taotaoke.common.pojo.DataResult;
@@ -57,10 +60,28 @@ public class itemController {
 		TaotaoResult taotaoResult = itemService.createItem(item);
 		return taotaoResult;
 	}
-	
-	@RequestMapping("/rest/page/item-edit")
+
+	/**
+	 * 加载編輯页面
+	 * 
+	 * @param itemedit
+	 * @return itemedit
+	 */
+	@RequestMapping("/rest/page/{itemedit}")
+
+	public String changeItem(@PathVariable String itemedit) {
+
+		return itemedit;
+	}
+
+	@RequestMapping("/rest/item/update")
 	@ResponseBody
-	
-	
+	public TaotaoResult changeItem(TbItem item) {
+		item.setUpdated(new Date());
+		item.setCreated(new Date());
+		TaotaoResult result = itemService.updateItem(item);
+		return result;
+
+	}
 
 }

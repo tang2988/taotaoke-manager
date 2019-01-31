@@ -65,6 +65,12 @@ public class itemServiceImpl implements itemService {
 		return TaotaoResult.ok();
 	}
 
+	public TaotaoResult updateItem(TbItem item) {
+		
+		itemMapper.updateByPrimaryKey(item);
+		return TaotaoResult.ok();
+	}
+
 	
 
 }
