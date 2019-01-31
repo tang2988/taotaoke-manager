@@ -71,6 +71,11 @@ public class itemServiceImpl implements itemService {
 		return TaotaoResult.ok();
 	}
 
+	public TaotaoResult delItem(Long id) {
+		itemMapper.deleteByPrimaryKey(id);
+		return TaotaoResult.ok();
+	}
+
 	
 
 }

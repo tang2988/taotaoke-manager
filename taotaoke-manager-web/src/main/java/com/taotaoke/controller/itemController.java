@@ -83,5 +83,12 @@ public class itemController {
 		return result;
 
 	}
+	
+	@RequestMapping("/rest/item/delete")
+	@ResponseBody
+	public TaotaoResult deleteItem(Long id){
+		 TaotaoResult taotaoResult = itemService.delItem(id);
+		return taotaoResult;
+	}
 
 }
