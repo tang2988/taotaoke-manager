@@ -31,6 +31,10 @@
 	            <td>库存数量:</td>
 	            <td><input class="easyui-numberbox" type="text" name="num" data-options="min:1,max:99999999,precision:0,required:true" /></td>
 	        </tr>
+	         <tr>
+	            <td>状态:</td>
+	            <td><input class="easyui-numberbox" type="text" name="status" data-options="min:1,max:99999999,precision:0,required:true" /></td>
+	        </tr>
 	        <tr>
 	            <td>条形码:</td>
 	            <td>
@@ -44,6 +48,7 @@
 	                <input type="hidden" name="image"/>
 	            </td>
 	        </tr>
+	        
 	        <tr>
 	            <td>商品描述:</td>
 	            <td>
