@@ -12,8 +12,10 @@ import com.github.pagehelper.PageInfo;
 import com.taotaoke.common.pojo.DataResult;
 import com.taotaoke.common.pojo.TaotaoResult;
 import com.taotaoke.common.util.IDUtils;
+import com.taotaoke.mapper.TbItemDescMapper;
 import com.taotaoke.mapper.TbItemMapper;
 import com.taotaoke.pojo.TbItem;
+import com.taotaoke.pojo.TbItemDesc;
 import com.taotaoke.pojo.TbItemExample;
 import com.taotaoke.service.itemService;
 
@@ -22,6 +24,9 @@ public class itemServiceImpl implements itemService {
 
 	@Resource
 	TbItemMapper itemMapper;
+	
+	@Resource
+	TbItemDescMapper descMapper;
 
 	public TbItem selecById(Long id) {
 		/*
@@ -53,7 +58,7 @@ public class itemServiceImpl implements itemService {
 		return dataResult;
 	}
 
-	public TaotaoResult createItem(TbItem item) {
+	public TaotaoResult createItem(TbItem item,String desc)throws Exception{
 
 		// 填充数据
 		long itemid = IDUtils.genItemId();
@@ -61,8 +66,32 @@ public class itemServiceImpl implements itemService {
 		item.setStatus((byte) 1);
 		item.setUpdated(new Date());
 		item.setCreated(new Date());
+		//插入到数据库
 		itemMapper.insert(item);
+		//添加商品描述
+		TaotaoResult result = createitemdesc(itemid,desc);
+		if(result.getStatus()!=200){
+			throw new Exception();
+		}
 		return TaotaoResult.ok();
+	}
+	
+	/**
+	 * 商品描述添加
+	 *谢雄辉
+	 *version 1.8
+	 *2019年2月13日
+	 *@return
+	 */
+	public TaotaoResult createitemdesc(Long itemId, String desc){
+		  TbItemDesc record = new TbItemDesc();
+		  record.setCreated(new Date());
+		  record.setItemId(itemId);
+		  record.setUpdated(new Date());
+		  record.setItemDesc(desc);
+		  descMapper.insert(record );
+		return TaotaoResult.ok();
+		
 	}
 
 	public TaotaoResult updateItem(TbItem item) {
@@ -75,7 +104,5 @@ public class itemServiceImpl implements itemService {
 		itemMapper.deleteByPrimaryKey(id);
 		return TaotaoResult.ok();
 	}
-
-	
 
 }

@@ -35,8 +35,9 @@ public interface itemService {
 	 *2019年2月1日
 	 *@param item
 	 *@return
+	 * @throws Exception 
 	 */
-	public TaotaoResult createItem(TbItem item);
+	public TaotaoResult createItem(TbItem item,String desc) throws Exception;
 	/**
 	 * 编辑商品信息
 	 *谢雄辉
@@ -47,6 +48,14 @@ public interface itemService {
 	 */
 	public TaotaoResult updateItem(TbItem item);
 	
+	/**
+	 * 删除商品
+	 *谢雄辉
+	 *version 1.8
+	 *2019年2月13日
+	 *@param id
+	 *@return
+	 */
 	public TaotaoResult delItem(Long id);
 
 }
