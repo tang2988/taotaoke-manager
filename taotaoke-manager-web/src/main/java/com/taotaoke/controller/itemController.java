@@ -53,12 +53,12 @@ public class itemController {
 	 * 
 	 * @param item
 	 * @return taotaoResult
-	 * @throws Exception 
+	 * @throws Exception
 	 */
 	@RequestMapping("/item/save")
 	@ResponseBody
-	public TaotaoResult createItem(TbItem item,String desc) throws Exception {
-		TaotaoResult taotaoResult = itemService.createItem(item,desc);
+	public TaotaoResult createItem(TbItem item, String desc, String itemParams) throws Exception {
+		TaotaoResult taotaoResult = itemService.createItem(item, desc, itemParams);
 		return taotaoResult;
 	}
 
@@ -84,11 +84,11 @@ public class itemController {
 		return result;
 
 	}
-	
+
 	@RequestMapping("/rest/item/delete")
 	@ResponseBody
-	public TaotaoResult deleteItem(Long id){
-		 TaotaoResult taotaoResult = itemService.delItem(id);
+	public TaotaoResult deleteItem(Long id) {
+		TaotaoResult taotaoResult = itemService.delItem(id);
 		return taotaoResult;
 	}
 

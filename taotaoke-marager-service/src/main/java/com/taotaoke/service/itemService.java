@@ -37,7 +37,7 @@ public interface itemService {
 	 *@return
 	 * @throws Exception 
 	 */
-	public TaotaoResult createItem(TbItem item,String desc) throws Exception;
+	public TaotaoResult createItem(TbItem item, String desc, String itemParam) throws Exception;
 	/**
 	 * 编辑商品信息
 	 *谢雄辉
