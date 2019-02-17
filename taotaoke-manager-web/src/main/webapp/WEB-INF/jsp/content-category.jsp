@@ -38,7 +38,15 @@ $(function(){
         			}
         		});
         	}else{
-        		$.post("/content/category/update",{id:node.id,name:node.text});
+        		$.post("/content/category/update",{id:node.id,name:node.text},function(data){
+        			if(data.status==200){
+        				$.messager.alert('提示','更新'+node.text+' 成功');
+        			}else{
+        				
+        				$.messager.alert('提示','更新'+node.text+' 失败!');
+        			}
+        			
+        		});
         	}
         }
 	});
